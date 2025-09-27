@@ -1,13 +1,13 @@
-package com.ryg.expense_tracker_service;
+package com.ryg.financetracker;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ExpenseTrackerServiceApplication {
+public class FinanceTrackerServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ExpenseTrackerServiceApplication.class, args);
+		SpringApplication.run(FinanceTrackerServiceApplication.class, args);
 	}
 
 }

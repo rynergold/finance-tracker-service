@@ -1,10 +1,10 @@
-package com.ryg.expense_tracker_service;
+package com.ryg.financetracker;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ExpenseTrackerServiceApplicationTests {
+class FinanceTrackerServiceApplicationTests {
 
 	@Test
 	void contextLoads() {
