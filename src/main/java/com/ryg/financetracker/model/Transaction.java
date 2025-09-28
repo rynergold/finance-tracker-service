@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Table("finances")
-public class Finances {
+public class Transaction {
 
     @Id
     @Column("id")
@@ -29,7 +29,7 @@ public class Finances {
     @Column("description")
     private String description;
 
-    public Finances() {}
+    public Transaction() {}
 
     public Integer getId() {
         return id;
