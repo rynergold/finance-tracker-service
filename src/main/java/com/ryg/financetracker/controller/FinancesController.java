@@ -16,13 +16,12 @@ public class FinancesController {
     /* We can't allow anything but
     the accepted object structure for a form enty
      */
-
     public FinancesController(FinancesService financesService) {
         this.financesService = financesService;
     }
 
 
-    @PostMapping("/finances")
+    @PostMapping("/transaction")
     @ResponseStatus(HttpStatus.CREATED)
     public Mono<Finances> addEntry(@RequestBody Finances transaction){
         return financesService.save(transaction);

@@ -1,1 +1,0 @@
-CREATE TYPE transaction_type_enum AS ENUM ('INCOME', 'EXPENSE');

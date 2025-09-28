@@ -9,7 +9,7 @@ public class CorsConfig implements WebFluxConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry corsRegistry) {
-        corsRegistry.addMapping("/")
+        corsRegistry.addMapping("/**")
             .allowedOrigins("http://localhost:3000", "http://localhost:5173")
             .allowedMethods("*")
             .allowedHeaders("*");
