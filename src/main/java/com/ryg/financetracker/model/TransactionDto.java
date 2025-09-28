@@ -3,75 +3,84 @@ package com.ryg.financetracker.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+import org.springframework.data.annotation.Id;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class TransactionDto {
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate transactionDate;
+  @Id private Integer id;
 
-    @NotNull
-    private TransactionType transactionType;
+  @JsonFormat(pattern = "yyyy-MM-dd")
+  private LocalDate transactionDate;
 
-    private String category;
+  @NotNull private TransactionType transactionType;
 
-    @NotNull
-    @Positive
-    private BigDecimal amount;
+  private String category;
 
-    @NotNull
-    private String description;
+  @NotNull @Positive private BigDecimal amount;
 
-    public TransactionDto() {
-    }
+  @NotNull private String description;
 
-    public TransactionDto(LocalDate transactionDate, TransactionType transactionType, String category, BigDecimal amount, String description) {
-        this.transactionDate = transactionDate;
-        this.transactionType = transactionType;
-        this.category = category;
-        this.amount = amount;
-        this.description = description;
-    }
+  public TransactionDto() {}
 
-    public LocalDate getTransactionDate() {
-        return transactionDate;
-    }
+  public TransactionDto(
+      Integer id,
+      LocalDate transactionDate,
+      TransactionType transactionType,
+      String category,
+      BigDecimal amount,
+      String description) {
+    this.id = id;
+    this.transactionDate = transactionDate;
+    this.transactionType = transactionType;
+    this.category = category;
+    this.amount = amount;
+    this.description = description;
+  }
 
-    public void setTransactionDate(LocalDate transactionDate) {
-        this.transactionDate = transactionDate;
-    }
+  public Integer getId() {
+    return id;
+  }
 
-    public TransactionType getTransactionType() {
-        return transactionType;
-    }
+  public LocalDate getTransactionDate() {
+    return transactionDate;
+  }
 
-    public void setTransactionType(TransactionType transactionType) {
-        this.transactionType = transactionType;
-    }
+  public void setTransactionDate(LocalDate transactionDate) {
+    this.transactionDate = transactionDate;
+  }
 
-    public String getCategory() {
-        return category;
-    }
+  public TransactionType getTransactionType() {
+    return transactionType;
+  }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
+  public void setTransactionType(TransactionType transactionType) {
+    this.transactionType = transactionType;
+  }
 
-    public BigDecimal getAmount() {
-        return amount;
-    }
+  public String getCategory() {
+    return category;
+  }
 
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
-    }
+  public void setCategory(String category) {
+    this.category = category;
+  }
 
-    public String getDescription() {
-        return description;
-    }
+  public BigDecimal getAmount() {
+    return amount;
+  }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+  public void setAmount(BigDecimal amount) {
+    this.amount = amount;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
 }
