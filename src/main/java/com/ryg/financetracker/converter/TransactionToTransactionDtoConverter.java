@@ -1,6 +1,6 @@
 package com.ryg.financetracker.converter;
 
-import com.ryg.financetracker.model.Transaction;
+import com.ryg.financetracker.model.table.Transaction;
 import com.ryg.financetracker.model.TransactionDto;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.core.convert.converter.Converter;
@@ -17,7 +17,7 @@ public class TransactionToTransactionDtoConverter
           source.getId(),
           source.getTransactionDate(),
           source.getTransactionType(),
-          source.getCategory(),
+          source.getCategoryId(),
           source.getAmount(),
           source.getDescription());
     } catch (final IllegalArgumentException exception) {

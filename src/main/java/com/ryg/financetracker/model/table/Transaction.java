@@ -1,44 +1,35 @@
-package com.ryg.financetracker.model;
+package com.ryg.financetracker.model.table;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
-import org.springframework.data.annotation.Id;
-
+import com.ryg.financetracker.model.TransactionType;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
-public class TransactionDto {
+@Table("finances")
+public class Transaction {
 
-  @Id private Integer id;
+  @Id
+  @Column("id")
+  private Integer id;
 
-  @JsonFormat(pattern = "yyyy-MM-dd")
+  @Column("transaction_date")
   private LocalDate transactionDate;
 
-  @NotNull private TransactionType transactionType;
+  @Column("transaction_type")
+  private TransactionType transactionType;
 
+  @Column("category_id")
   private Integer categoryId;
 
-  @NotNull @Positive private BigDecimal amount;
+  @Column("amount")
+  private BigDecimal amount;
 
-  @NotNull private String description;
+  @Column("description")
+  private String description;
 
-  public TransactionDto() {}
-
-  public TransactionDto(
-      Integer id,
-      LocalDate transactionDate,
-      TransactionType transactionType,
-      Integer categoryId,
-      BigDecimal amount,
-      String description) {
-    this.id = id;
-    this.transactionDate = transactionDate;
-    this.transactionType = transactionType;
-    this.categoryId = categoryId;
-    this.amount = amount;
-    this.description = description;
-  }
+  public Transaction() {}
 
   public Integer getId() {
     return id;

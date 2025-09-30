@@ -1,6 +1,6 @@
 package com.ryg.financetracker.converter;
 
-import com.ryg.financetracker.model.Transaction;
+import com.ryg.financetracker.model.table.Transaction;
 import com.ryg.financetracker.model.TransactionDto;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.core.convert.converter.Converter;
@@ -15,7 +15,7 @@ public class TransactionDtoToTransactionConverter implements Converter<Transacti
             Transaction transaction = new Transaction();
             transaction.setTransactionDate(source.getTransactionDate());
             transaction.setTransactionType(source.getTransactionType());
-            transaction.setCategory(source.getCategory());
+            transaction.setCategoryId(source.getCategoryId());
             transaction.setAmount(source.getAmount());
             transaction.setDescription(source.getDescription());
             return transaction;

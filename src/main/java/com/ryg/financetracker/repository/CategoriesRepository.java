@@ -1,10 +1,10 @@
 package com.ryg.financetracker.repository;
 
-import com.ryg.financetracker.model.table.Transaction;
+import com.ryg.financetracker.model.table.Category;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface FinancesRepository extends ReactiveCrudRepository<Transaction, Integer> {
+public interface CategoriesRepository extends ReactiveCrudRepository<Category, Integer> {
 
 }

@@ -1,6 +1,6 @@
 package com.ryg.financetracker.service;
 
-import com.ryg.financetracker.model.Transaction;
+import com.ryg.financetracker.model.table.Transaction;
 import com.ryg.financetracker.model.TransactionDto;
 import com.ryg.financetracker.repository.FinancesRepository;
 import org.springframework.core.convert.ConversionService;
@@ -31,5 +31,32 @@ public class FinancesService {
             .flatMap(financesRepository::save)
             .thenReturn(true)
             .switchIfEmpty(Mono.just(false));
+    }
+
+  public Mono<Boolean> updateTransaction(Integer id, TransactionDto dto) {
+    return financesRepository.findById(id)
+      .flatMap(existingTransaction -> {
+        existingTransaction.setTransactionDate(dto.getTransactionDate());
+        existingTransaction.setTransactionType(dto.getTransactionType());
+        existingTransaction.setCategoryId(dto.getCategoryId());
+        existingTransaction.setAmount(dto.getAmount());
+        existingTransaction.setDescription(dto.getDescription());
+
+        return financesRepository.save(existingTransaction);
+      })
+      .map(saved -> true)
+      .defaultIfEmpty(false);
+  }
+
+    public Mono<Boolean> deleteTransaction(Integer id) {
+      return financesRepository.existsById(id)
+        .flatMap(exists -> {
+          if (exists) {
+            return financesRepository.deleteById(id).thenReturn(true);
+          } else {
+            return Mono.just(false);
+          }
+        })
+        .onErrorReturn(false);
     }
 }
