@@ -55,8 +55,7 @@ public class FinancesController {
   public Mono<ResponseEntity<Void>> deleteTransactions(
     @RequestParam List<Integer> ids) {
     return Flux.fromIterable(ids)
-      .flatMap(id -> financesService.deleteTransaction(id)
-        .onErrorResume(e -> Mono.just(false)))
+      .flatMap(financesService::deleteTransaction)
       .then(Mono.just(ResponseEntity.noContent().build()));
   }
 }
